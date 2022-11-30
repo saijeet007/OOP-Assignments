@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+class set
+{
+    int no;
+    string name[20];
+    public:
+    void read();
+    void display();
+};
+void set::read()
+{
+    cout<<"Enter the no. people\n";
+    cin>>no;
+    cout<<"Enter the names of people:";
+    for(int i=0;i<no;i++)
+    {
+        cin>>name[i];
+    }
+}
+void set::display()
+{
+    for(int i=0;i<no;i++)
+    {
+        cout<<name[i]<<endl;
+    }
+}
+int main() {
+    set a,b;
+    cout<<"For Pizza:\n";
+    a.read();
+    cout<<"For Burger\n";
+    b.read();
+    cout<<"\nPizza:\n";
+    a.display();
+    cout<<"\nBurger\n";
+    b.display();
+    cout<<"\nSet of customers who like either pizza or burger or both:\n";
+    a.display();
+    b.display();
+   
+    return 0;
+}
