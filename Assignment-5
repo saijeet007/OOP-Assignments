@@ -1,0 +1,94 @@
+#include<iostream>
+using namespace std;
+
+class Matrix
+{
+  private:
+  int row;
+  int column;
+  int mat[5][5];
+  public:
+ 
+  void set_mat()
+  {
+      cout<<"Enter number of rows and columns"<<endl;
+      cin>>row>>column;
+      try
+      {
+       if(row>5 || column>5)
+       {
+           throw 1;
+       }
+      for(int i=0;i<row;i++)
+      {
+          for(int j=0;j<column;j++)
+          {
+              cout<<"Enter mat["<<i+1<<"]["<<j+1<<"] ";
+              cin>>mat[i][j];
+          }
+      }
+      }
+      catch(int a)
+      {
+          cout<<"Exception caught"<<endl;
+          cout<<"Number of row or columns exceeded"<<endl;
+          exit(0);
+      }
+  }
+  void display()
+  {
+      for(int i=0;i<row;i++)
+      {
+          for(int j=0;j<column;j++)
+          {
+              cout<<mat[i][j]<<" ";
+          }
+          cout<<endl;
+      }
+  }
+  Matrix addition(Matrix m2)
+  {
+     
+      try
+      {
+          if(row!=m2.row || column!=m2.column)
+          {
+              throw 2;
+          }
+       Matrix m3;
+       m3.row=row;
+       m3.column=column;
+      for(int i=0;i<row;i++)
+      {
+          for(int j=0;j<column;j++)
+          {
+              m3.mat[i][j]=mat[i][j] + m2.mat[i][j];
+          }
+      }
+      cout<<"Addition is:\n";
+      return m3;
+      }
+      catch(int b)
+      {
+          cout<<"Exception caught"<<endl;
+          cout<<"Number of rows and columns are not equal"<<endl;
+          exit(0);
+      }
+  }
+ 
+};
+int main()
+{
+   Matrix m1,m2,m3;
+   m1.set_mat();
+   m1.display();
+   m2.set_mat();
+   
+   m2.display();
+   cout<<endl;
+   
+  
+   m3=m1.addition(m2);
+   m3.display();
+   return 0;
+}
